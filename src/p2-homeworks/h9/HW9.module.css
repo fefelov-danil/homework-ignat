@@ -1,0 +1,17 @@
+.HW9 {
+    padding: 50px;
+    background: #D4E0CE;
+    margin: 6px;
+}
+.HW9 button {
+    padding: 3px 8px;
+    background: #5D90EA;
+    color: #fff;
+    border: 0;
+    border-radius: 4px;
+    margin-right: 8px;
+}
+.time,
+.date {
+    height: 25px;
+}
