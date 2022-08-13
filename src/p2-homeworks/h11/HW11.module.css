@@ -3,3 +3,8 @@
     background: #CEDAE0;
     margin: 6px;
 }
+.valueRange {
+    display: inline-block;
+    width: 19px;
+    text-align: center;
+}

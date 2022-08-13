@@ -11,6 +11,11 @@ function HW11() {
         setValue1(value)
     }
 
+    const onChangeDoubleRange = (value: [number, number]) => {
+        setValue1(value[0])
+        setValue2(value[1])
+    }
+
     return (
         <div className={s.HW11}>
             <hr/>
@@ -18,18 +23,20 @@ function HW11() {
 
             {/*should work (должно работать)*/}
             <div>
-                <span>{value1}</span>
+                <span className={s.valueRange}>{value1}</span>
                 <SuperRange
                     onChangeRange={onChangeRangeHandler}
+                    value={value1}
                 />
             </div>
 
             <div>
-                <span>{value1}</span>
+                <span className={s.valueRange}>{value1}</span>
                 <SuperDoubleRange
-                    // сделать так чтоб value1 и value2 изменялось
+                    onChangeDoubleRange={onChangeDoubleRange}
+                    doubleValue={[value1, value2]}
                 />
-                <span>{value2}</span>
+                <span className={s.valueRange}>{value2}</span>
             </div>
 
             <hr/>

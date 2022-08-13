@@ -1,0 +1,9 @@
+.doubleRange {
+    position: relative;
+    display: inline-block;
+    width: 133px;
+}
+.firstOnChange {
+    appearance: none;
+    background: transparent;
+}

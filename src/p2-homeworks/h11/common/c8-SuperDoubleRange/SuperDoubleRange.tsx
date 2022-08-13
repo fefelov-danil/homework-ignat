@@ -1,23 +1,49 @@
-import React from 'react'
+import {Box, Slider} from '@mui/material'
+import React, {ChangeEvent, DetailedHTMLProps, InputHTMLAttributes} from 'react'
+import s from './SuperDoubleRange.module.css'
 
-type SuperDoubleRangePropsType = {
-    onChangeRange?: (value: [number, number]) => void
-    value?: [number, number]
+type DefaultInputPropsType = DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>
+
+type SuperDoubleRangePropsType = DefaultInputPropsType & {
+    onChangeDoubleRange?: (value: [number, number]) => void
+    doubleValue: [number, number]
     // min, max, step, disable, ...
+}
+
+function valuetext(value: number) {
+    return `${value}°C`;
 }
 
 const SuperDoubleRange: React.FC<SuperDoubleRangePropsType> = (
     {
-        onChangeRange, value,
+        onChange,
+        onChangeDoubleRange,
+        doubleValue,
+        ...restProps
         // min, max, step, disable, ...
     }
 ) => {
-    // сделать самому, можно подключать библиотеки
+
+    const firstOnChange = (e: ChangeEvent<HTMLInputElement>) => {
+        onChange && onChange(e)
+        onChangeDoubleRange && onChangeDoubleRange([+e.currentTarget.value, doubleValue[1]])
+    }
+
+
+    const handleChange = (event: Event, newValue: number | number[]) => {
+        onChangeDoubleRange && onChangeDoubleRange(newValue as [number, number])
+    };
 
     return (
-        <>
-            DoubleRange
-        </>
+        <div className={s.doubleRange}>
+            <Slider
+                getAriaLabel={() => 'Minimum distance'}
+                value={doubleValue}
+                onChange={handleChange}
+                valueLabelDisplay="auto"
+                disableSwap
+            />
+        </div>
     )
 }
 
